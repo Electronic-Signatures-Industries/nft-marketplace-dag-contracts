@@ -11,7 +11,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
-	"github.com/anconprotocol/contracts/graphql/server/graph/model"
+	"github.com/Electronic-Signatures-Industries/nft-marketplace-dag-contracts/graphql/server/graph/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -493,7 +493,7 @@ func (ec *executionContext) field_Transaction_metadata_args(ctx context.Context,
 	var arg0 model.MetadataTransactionInput
 	if tmp, ok := rawArgs["tx"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("tx"))
-		arg0, err = ec.unmarshalNMetadataTransactionInput2githubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐMetadataTransactionInput(ctx, tmp)
+		arg0, err = ec.unmarshalNMetadataTransactionInput2githubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐMetadataTransactionInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -814,7 +814,7 @@ func (ec *executionContext) _Ancon721Metadata_sources(ctx context.Context, field
 	}
 	res := resTmp.([]*model.DagLink)
 	fc.Result = res
-	return ec.marshalODagLink2ᚕᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLinkᚄ(ctx, field.Selections, res)
+	return ec.marshalODagLink2ᚕᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLinkᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _DagContractTrusted_data(ctx context.Context, field graphql.CollectedField, obj *model.DagContractTrusted) (ret graphql.Marshaler) {
@@ -846,7 +846,7 @@ func (ec *executionContext) _DagContractTrusted_data(ctx context.Context, field 
 	}
 	res := resTmp.(*model.DagLink)
 	fc.Result = res
-	return ec.marshalNDagLink2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx, field.Selections, res)
+	return ec.marshalNDagLink2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _DagContractTrusted_payload(ctx context.Context, field graphql.CollectedField, obj *model.DagContractTrusted) (ret graphql.Marshaler) {
@@ -878,7 +878,7 @@ func (ec *executionContext) _DagContractTrusted_payload(ctx context.Context, fie
 	}
 	res := resTmp.(*model.Ancon721Metadata)
 	fc.Result = res
-	return ec.marshalNAncon721Metadata2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx, field.Selections, res)
+	return ec.marshalNAncon721Metadata2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _DagLink_path(ctx context.Context, field graphql.CollectedField, obj *model.DagLink) (ret graphql.Marshaler) {
@@ -1102,7 +1102,7 @@ func (ec *executionContext) _OrderReferences_links(ctx context.Context, field gr
 	}
 	res := resTmp.([]*model.OrderReference)
 	fc.Result = res
-	return ec.marshalNOrderReference2ᚕᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferenceᚄ(ctx, field.Selections, res)
+	return ec.marshalNOrderReference2ᚕᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferenceᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query_metadata(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1138,7 +1138,7 @@ func (ec *executionContext) _Query_metadata(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(*model.Ancon721Metadata)
 	fc.Result = res
-	return ec.marshalOAncon721Metadata2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx, field.Selections, res)
+	return ec.marshalOAncon721Metadata2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query_getOrderReference(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1174,7 +1174,7 @@ func (ec *executionContext) _Query_getOrderReference(ctx context.Context, field 
 	}
 	res := resTmp.(*model.OrderReference)
 	fc.Result = res
-	return ec.marshalOOrderReference2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx, field.Selections, res)
+	return ec.marshalOOrderReference2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query_getOrderReferences(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1203,7 +1203,7 @@ func (ec *executionContext) _Query_getOrderReferences(ctx context.Context, field
 	}
 	res := resTmp.(*model.OrderReferences)
 	fc.Result = res
-	return ec.marshalOOrderReferences2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferences(ctx, field.Selections, res)
+	return ec.marshalOOrderReferences2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferences(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query___type(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -1307,7 +1307,7 @@ func (ec *executionContext) _Transaction_metadata(ctx context.Context, field gra
 	}
 	res := resTmp.(*model.DagLink)
 	fc.Result = res
-	return ec.marshalNDagLink2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx, field.Selections, res)
+	return ec.marshalNDagLink2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) ___Directive_name(ctx context.Context, field graphql.CollectedField, obj *introspection.Directive) (ret graphql.Marshaler) {
@@ -2908,7 +2908,7 @@ func (ec *executionContext) ___Type(ctx context.Context, sel ast.SelectionSet, o
 
 // region    ***************************** type.gotpl *****************************
 
-func (ec *executionContext) marshalNAncon721Metadata2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx context.Context, sel ast.SelectionSet, v *model.Ancon721Metadata) graphql.Marshaler {
+func (ec *executionContext) marshalNAncon721Metadata2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx context.Context, sel ast.SelectionSet, v *model.Ancon721Metadata) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
@@ -2933,11 +2933,11 @@ func (ec *executionContext) marshalNBoolean2bool(ctx context.Context, sel ast.Se
 	return res
 }
 
-func (ec *executionContext) marshalNDagLink2githubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx context.Context, sel ast.SelectionSet, v model.DagLink) graphql.Marshaler {
+func (ec *executionContext) marshalNDagLink2githubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx context.Context, sel ast.SelectionSet, v model.DagLink) graphql.Marshaler {
 	return ec._DagLink(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNDagLink2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx context.Context, sel ast.SelectionSet, v *model.DagLink) graphql.Marshaler {
+func (ec *executionContext) marshalNDagLink2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx context.Context, sel ast.SelectionSet, v *model.DagLink) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
@@ -2947,12 +2947,12 @@ func (ec *executionContext) marshalNDagLink2ᚖgithubᚗcomᚋanconprotocolᚋco
 	return ec._DagLink(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNMetadataTransactionInput2githubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐMetadataTransactionInput(ctx context.Context, v interface{}) (model.MetadataTransactionInput, error) {
+func (ec *executionContext) unmarshalNMetadataTransactionInput2githubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐMetadataTransactionInput(ctx context.Context, v interface{}) (model.MetadataTransactionInput, error) {
 	res, err := ec.unmarshalInputMetadataTransactionInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNOrderReference2ᚕᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferenceᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.OrderReference) graphql.Marshaler {
+func (ec *executionContext) marshalNOrderReference2ᚕᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferenceᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.OrderReference) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -2976,7 +2976,7 @@ func (ec *executionContext) marshalNOrderReference2ᚕᚖgithubᚗcomᚋanconpro
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNOrderReference2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx, sel, v[i])
+			ret[i] = ec.marshalNOrderReference2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -2996,7 +2996,7 @@ func (ec *executionContext) marshalNOrderReference2ᚕᚖgithubᚗcomᚋanconpro
 	return ret
 }
 
-func (ec *executionContext) marshalNOrderReference2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx context.Context, sel ast.SelectionSet, v *model.OrderReference) graphql.Marshaler {
+func (ec *executionContext) marshalNOrderReference2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx context.Context, sel ast.SelectionSet, v *model.OrderReference) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "must not be null")
@@ -3278,7 +3278,7 @@ func (ec *executionContext) marshalN__TypeKind2string(ctx context.Context, sel a
 	return res
 }
 
-func (ec *executionContext) marshalOAncon721Metadata2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx context.Context, sel ast.SelectionSet, v *model.Ancon721Metadata) graphql.Marshaler {
+func (ec *executionContext) marshalOAncon721Metadata2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx context.Context, sel ast.SelectionSet, v *model.Ancon721Metadata) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -3309,7 +3309,7 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return graphql.MarshalBoolean(*v)
 }
 
-func (ec *executionContext) marshalODagLink2ᚕᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLinkᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.DagLink) graphql.Marshaler {
+func (ec *executionContext) marshalODagLink2ᚕᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLinkᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.DagLink) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -3336,7 +3336,7 @@ func (ec *executionContext) marshalODagLink2ᚕᚖgithubᚗcomᚋanconprotocol�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNDagLink2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx, sel, v[i])
+			ret[i] = ec.marshalNDagLink2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐDagLink(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -3356,14 +3356,14 @@ func (ec *executionContext) marshalODagLink2ᚕᚖgithubᚗcomᚋanconprotocol�
 	return ret
 }
 
-func (ec *executionContext) marshalOOrderReference2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx context.Context, sel ast.SelectionSet, v *model.OrderReference) graphql.Marshaler {
+func (ec *executionContext) marshalOOrderReference2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx context.Context, sel ast.SelectionSet, v *model.OrderReference) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._OrderReference(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOOrderReferences2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferences(ctx context.Context, sel ast.SelectionSet, v *model.OrderReferences) graphql.Marshaler {
+func (ec *executionContext) marshalOOrderReferences2ᚖgithubᚗcomᚋElectronicᚑSignaturesᚑIndustriesᚋnftᚑmarketplaceᚑdagᚑcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferences(ctx context.Context, sel ast.SelectionSet, v *model.OrderReferences) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}

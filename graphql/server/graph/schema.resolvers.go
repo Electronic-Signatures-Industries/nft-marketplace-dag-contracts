@@ -8,8 +8,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/anconprotocol/contracts/graphql/server/graph/generated"
-	"github.com/anconprotocol/contracts/graphql/server/graph/model"
+	"github.com/Electronic-Signatures-Industries/nft-marketplace-dag-contracts/graphql/server/graph/generated"
+	"github.com/Electronic-Signatures-Industries/nft-marketplace-dag-contracts/graphql/server/graph/model"
 	"github.com/anconprotocol/node/x/anconsync"
 	"github.com/anconprotocol/node/x/anconsync/handler"
 	ipld "github.com/ipld/go-ipld-prime"
@@ -32,7 +32,6 @@ func (r *queryResolver) Metadata(ctx context.Context, cid string, path string) (
 }
 
 func (r *queryResolver) GetOrderReference(ctx context.Context, cid string) (*model.OrderReference, error) {
-
 	dag := ctx.Value("dag").(*handler.AnconSyncContext)
 
 	path := ""

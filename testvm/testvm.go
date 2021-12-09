@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	"github.com/anconprotocol/contracts/hexutil"
+	"github.com/Electronic-Signatures-Industries/nft-marketplace-dag-contracts/hexutil"
 	"github.com/anconprotocol/node/x/anconsync"
 	"github.com/wasmerio/wasmer-go/wasmer"
 )
@@ -59,7 +59,7 @@ func (e *WASM) Run(v hexutil.Bytes) hexutil.Bytes {
 		// MapDirectory("./", ".").
 		Finalize()
 	importObject, err := wasiEnv.GenerateImportObject(store, module)
-	
+
 	if err != nil {
 		panic(err)
 	}
@@ -78,13 +78,12 @@ func (e *WASM) Run(v hexutil.Bytes) hexutil.Bytes {
 	)
 
 	instance, err := wasmer.NewInstance(module, importObject)
- 
 
 	if err != nil {
 		panic(err)
 	}
 	start, err := instance.Exports.GetWasiStartFunction()
- 
+
 	if err != nil {
 		panic(err)
 	}
