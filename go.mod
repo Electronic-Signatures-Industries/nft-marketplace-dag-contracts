@@ -1,4 +1,4 @@
-module github.com/anconprotocol/contracts
+module github.com/electronic-Signatures-Industries/nft-marketplace-dag-contracts
 
 go 1.17
 

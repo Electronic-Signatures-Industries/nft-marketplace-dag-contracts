@@ -31,6 +31,26 @@ func (r *queryResolver) Metadata(ctx context.Context, cid string, path string) (
 	return &metadata, nil
 }
 
+func (r *queryResolver) GetOrderReference(ctx context.Context, cid string) (*model.OrderReference, error) {
+
+	dag := ctx.Value("dag").(*handler.AnconSyncContext)
+
+	path := ""
+
+	jsonmodel, err := anconsync.ReadFromStore(dag.Store, cid, path)
+	if err != nil {
+		return nil, err
+	}
+	var metadata model.Ancon721Metadata
+	json.Unmarshal([]byte(jsonmodel), &metadata)
+	return &model.OrderReference{}, nil
+	// panic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) GetOrderReferences(ctx context.Context) (*model.OrderReferences, error) {
+	panic(fmt.Errorf("not implemented"))
+}
+
 func (r *transactionResolver) Metadata(ctx context.Context, tx model.MetadataTransactionInput) (*model.DagLink, error) {
 	dag := ctx.Value("dag").(*handler.AnconSyncContext)
 

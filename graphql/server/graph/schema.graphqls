@@ -5,6 +5,17 @@ schema {
     mutation: Transaction
 }
 
+type OrderReferences{
+  links:[OrderReference!]!
+}
+
+type OrderReference{
+  orderHash: String!
+  tokenId: String!
+  tokenAddres: String!
+  txHash: String!
+}
+
 type Ancon721Metadata {
   name: String!
   description: String!
@@ -26,6 +37,8 @@ type DagContractTrusted {
 
 type Query {
   metadata(cid: String!, path: String!): Ancon721Metadata
+  getOrderReference(cid: String!): OrderReference
+  getOrderReferences: OrderReferences
 }
 
 input MetadataTransactionInput {

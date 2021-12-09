@@ -5,5 +5,6 @@ package graph
 // It serves as dependency injection for your app, add any dependencies you require here.
 
 type Resolver struct {
-	Metadata map[string]interface{}
+	Metadata       map[string]interface{}
+	OrderReference map[string]interface{}
 }

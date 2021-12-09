@@ -62,8 +62,21 @@ type ComplexityRoot struct {
 		Path func(childComplexity int) int
 	}
 
+	OrderReference struct {
+		OrderHash   func(childComplexity int) int
+		TokenAddres func(childComplexity int) int
+		TokenID     func(childComplexity int) int
+		TxHash      func(childComplexity int) int
+	}
+
+	OrderReferences struct {
+		Links func(childComplexity int) int
+	}
+
 	Query struct {
-		Metadata func(childComplexity int, cid string, path string) int
+		GetOrderReference  func(childComplexity int, cid string) int
+		GetOrderReferences func(childComplexity int) int
+		Metadata           func(childComplexity int, cid string, path string) int
 	}
 
 	Transaction struct {
@@ -73,6 +86,8 @@ type ComplexityRoot struct {
 
 type QueryResolver interface {
 	Metadata(ctx context.Context, cid string, path string) (*model.Ancon721Metadata, error)
+	GetOrderReference(ctx context.Context, cid string) (*model.OrderReference, error)
+	GetOrderReferences(ctx context.Context) (*model.OrderReferences, error)
 }
 type TransactionResolver interface {
 	Metadata(ctx context.Context, tx model.MetadataTransactionInput) (*model.DagLink, error)
@@ -162,6 +177,60 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 		}
 
 		return e.complexity.DagLink.Path(childComplexity), true
+
+	case "OrderReference.orderHash":
+		if e.complexity.OrderReference.OrderHash == nil {
+			break
+		}
+
+		return e.complexity.OrderReference.OrderHash(childComplexity), true
+
+	case "OrderReference.tokenAddres":
+		if e.complexity.OrderReference.TokenAddres == nil {
+			break
+		}
+
+		return e.complexity.OrderReference.TokenAddres(childComplexity), true
+
+	case "OrderReference.tokenId":
+		if e.complexity.OrderReference.TokenID == nil {
+			break
+		}
+
+		return e.complexity.OrderReference.TokenID(childComplexity), true
+
+	case "OrderReference.txHash":
+		if e.complexity.OrderReference.TxHash == nil {
+			break
+		}
+
+		return e.complexity.OrderReference.TxHash(childComplexity), true
+
+	case "OrderReferences.links":
+		if e.complexity.OrderReferences.Links == nil {
+			break
+		}
+
+		return e.complexity.OrderReferences.Links(childComplexity), true
+
+	case "Query.getOrderReference":
+		if e.complexity.Query.GetOrderReference == nil {
+			break
+		}
+
+		args, err := ec.field_Query_getOrderReference_args(context.TODO(), rawArgs)
+		if err != nil {
+			return 0, false
+		}
+
+		return e.complexity.Query.GetOrderReference(childComplexity, args["cid"].(string)), true
+
+	case "Query.getOrderReferences":
+		if e.complexity.Query.GetOrderReferences == nil {
+			break
+		}
+
+		return e.complexity.Query.GetOrderReferences(childComplexity), true
 
 	case "Query.metadata":
 		if e.complexity.Query.Metadata == nil {
@@ -262,6 +331,17 @@ schema {
     mutation: Transaction
 }
 
+type OrderReferences{
+  links:[OrderReference!]!
+}
+
+type OrderReference{
+  orderHash: String!
+  tokenId: String!
+  tokenAddres: String!
+  txHash: String!
+}
+
 type Ancon721Metadata {
   name: String!
   description: String!
@@ -283,6 +363,8 @@ type DagContractTrusted {
 
 type Query {
   metadata(cid: String!, path: String!): Ancon721Metadata
+  getOrderReference(cid: String!): OrderReference
+  getOrderReferences: OrderReferences
 }
 
 input MetadataTransactionInput {
@@ -363,6 +445,21 @@ func (ec *executionContext) field_Query___type_args(ctx context.Context, rawArgs
 		}
 	}
 	args["name"] = arg0
+	return args, nil
+}
+
+func (ec *executionContext) field_Query_getOrderReference_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
+	var err error
+	args := map[string]interface{}{}
+	var arg0 string
+	if tmp, ok := rawArgs["cid"]; ok {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("cid"))
+		arg0, err = ec.unmarshalNString2string(ctx, tmp)
+		if err != nil {
+			return nil, err
+		}
+	}
+	args["cid"] = arg0
 	return args, nil
 }
 
@@ -848,6 +945,166 @@ func (ec *executionContext) _DagLink_cid(ctx context.Context, field graphql.Coll
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
+func (ec *executionContext) _OrderReference_orderHash(ctx context.Context, field graphql.CollectedField, obj *model.OrderReference) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "OrderReference",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp := ec._fieldMiddleware(ctx, obj, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.OrderHash, nil
+	})
+
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _OrderReference_tokenId(ctx context.Context, field graphql.CollectedField, obj *model.OrderReference) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "OrderReference",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp := ec._fieldMiddleware(ctx, obj, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.TokenID, nil
+	})
+
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _OrderReference_tokenAddres(ctx context.Context, field graphql.CollectedField, obj *model.OrderReference) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "OrderReference",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp := ec._fieldMiddleware(ctx, obj, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.TokenAddres, nil
+	})
+
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _OrderReference_txHash(ctx context.Context, field graphql.CollectedField, obj *model.OrderReference) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "OrderReference",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp := ec._fieldMiddleware(ctx, obj, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.TxHash, nil
+	})
+
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _OrderReferences_links(ctx context.Context, field graphql.CollectedField, obj *model.OrderReferences) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "OrderReferences",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp := ec._fieldMiddleware(ctx, obj, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Links, nil
+	})
+
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.([]*model.OrderReference)
+	fc.Result = res
+	return ec.marshalNOrderReference2ᚕᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferenceᚄ(ctx, field.Selections, res)
+}
+
 func (ec *executionContext) _Query_metadata(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
@@ -882,6 +1139,71 @@ func (ec *executionContext) _Query_metadata(ctx context.Context, field graphql.C
 	res := resTmp.(*model.Ancon721Metadata)
 	fc.Result = res
 	return ec.marshalOAncon721Metadata2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐAncon721Metadata(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _Query_getOrderReference(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Query",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   true,
+		IsResolver: true,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	rawArgs := field.ArgumentMap(ec.Variables)
+	args, err := ec.field_Query_getOrderReference_args(ctx, rawArgs)
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	fc.Args = args
+	resTmp := ec._fieldMiddleware(ctx, nil, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return ec.resolvers.Query().GetOrderReference(rctx, args["cid"].(string))
+	})
+
+	if resTmp == nil {
+		return graphql.Null
+	}
+	res := resTmp.(*model.OrderReference)
+	fc.Result = res
+	return ec.marshalOOrderReference2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _Query_getOrderReferences(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Query",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   true,
+		IsResolver: true,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp := ec._fieldMiddleware(ctx, nil, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return ec.resolvers.Query().GetOrderReferences(rctx)
+	})
+
+	if resTmp == nil {
+		return graphql.Null
+	}
+	res := resTmp.(*model.OrderReferences)
+	fc.Result = res
+	return ec.marshalOOrderReferences2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferences(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) _Query___type(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
@@ -2173,6 +2495,75 @@ func (ec *executionContext) _DagLink(ctx context.Context, sel ast.SelectionSet, 
 	return out
 }
 
+var orderReferenceImplementors = []string{"OrderReference"}
+
+func (ec *executionContext) _OrderReference(ctx context.Context, sel ast.SelectionSet, obj *model.OrderReference) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, orderReferenceImplementors)
+
+	out := graphql.NewFieldSet(fields)
+	var invalids uint32
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("OrderReference")
+		case "orderHash":
+			out.Values[i] = ec._OrderReference_orderHash(ctx, field, obj)
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "tokenId":
+			out.Values[i] = ec._OrderReference_tokenId(ctx, field, obj)
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "tokenAddres":
+			out.Values[i] = ec._OrderReference_tokenAddres(ctx, field, obj)
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "txHash":
+			out.Values[i] = ec._OrderReference_txHash(ctx, field, obj)
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch()
+	if invalids > 0 {
+		return graphql.Null
+	}
+	return out
+}
+
+var orderReferencesImplementors = []string{"OrderReferences"}
+
+func (ec *executionContext) _OrderReferences(ctx context.Context, sel ast.SelectionSet, obj *model.OrderReferences) graphql.Marshaler {
+	fields := graphql.CollectFields(ec.OperationContext, sel, orderReferencesImplementors)
+
+	out := graphql.NewFieldSet(fields)
+	var invalids uint32
+	for i, field := range fields {
+		switch field.Name {
+		case "__typename":
+			out.Values[i] = graphql.MarshalString("OrderReferences")
+		case "links":
+			out.Values[i] = ec._OrderReferences_links(ctx, field, obj)
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		default:
+			panic("unknown field " + strconv.Quote(field.Name))
+		}
+	}
+	out.Dispatch()
+	if invalids > 0 {
+		return graphql.Null
+	}
+	return out
+}
+
 var queryImplementors = []string{"Query"}
 
 func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) graphql.Marshaler {
@@ -2197,6 +2588,28 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 					}
 				}()
 				res = ec._Query_metadata(ctx, field)
+				return res
+			})
+		case "getOrderReference":
+			field := field
+			out.Concurrently(i, func() (res graphql.Marshaler) {
+				defer func() {
+					if r := recover(); r != nil {
+						ec.Error(ctx, ec.Recover(ctx, r))
+					}
+				}()
+				res = ec._Query_getOrderReference(ctx, field)
+				return res
+			})
+		case "getOrderReferences":
+			field := field
+			out.Concurrently(i, func() (res graphql.Marshaler) {
+				defer func() {
+					if r := recover(); r != nil {
+						ec.Error(ctx, ec.Recover(ctx, r))
+					}
+				}()
+				res = ec._Query_getOrderReferences(ctx, field)
 				return res
 			})
 		case "__type":
@@ -2537,6 +2950,60 @@ func (ec *executionContext) marshalNDagLink2ᚖgithubᚗcomᚋanconprotocolᚋco
 func (ec *executionContext) unmarshalNMetadataTransactionInput2githubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐMetadataTransactionInput(ctx context.Context, v interface{}) (model.MetadataTransactionInput, error) {
 	res, err := ec.unmarshalInputMetadataTransactionInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
+}
+
+func (ec *executionContext) marshalNOrderReference2ᚕᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferenceᚄ(ctx context.Context, sel ast.SelectionSet, v []*model.OrderReference) graphql.Marshaler {
+	ret := make(graphql.Array, len(v))
+	var wg sync.WaitGroup
+	isLen1 := len(v) == 1
+	if !isLen1 {
+		wg.Add(len(v))
+	}
+	for i := range v {
+		i := i
+		fc := &graphql.FieldContext{
+			Index:  &i,
+			Result: &v[i],
+		}
+		ctx := graphql.WithFieldContext(ctx, fc)
+		f := func(i int) {
+			defer func() {
+				if r := recover(); r != nil {
+					ec.Error(ctx, ec.Recover(ctx, r))
+					ret = nil
+				}
+			}()
+			if !isLen1 {
+				defer wg.Done()
+			}
+			ret[i] = ec.marshalNOrderReference2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx, sel, v[i])
+		}
+		if isLen1 {
+			f(i)
+		} else {
+			go f(i)
+		}
+
+	}
+	wg.Wait()
+
+	for _, e := range ret {
+		if e == graphql.Null {
+			return graphql.Null
+		}
+	}
+
+	return ret
+}
+
+func (ec *executionContext) marshalNOrderReference2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx context.Context, sel ast.SelectionSet, v *model.OrderReference) graphql.Marshaler {
+	if v == nil {
+		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	return ec._OrderReference(ctx, sel, v)
 }
 
 func (ec *executionContext) unmarshalNString2string(ctx context.Context, v interface{}) (string, error) {
@@ -2887,6 +3354,20 @@ func (ec *executionContext) marshalODagLink2ᚕᚖgithubᚗcomᚋanconprotocol�
 	}
 
 	return ret
+}
+
+func (ec *executionContext) marshalOOrderReference2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReference(ctx context.Context, sel ast.SelectionSet, v *model.OrderReference) graphql.Marshaler {
+	if v == nil {
+		return graphql.Null
+	}
+	return ec._OrderReference(ctx, sel, v)
+}
+
+func (ec *executionContext) marshalOOrderReferences2ᚖgithubᚗcomᚋanconprotocolᚋcontractsᚋgraphqlᚋserverᚋgraphᚋmodelᚐOrderReferences(ctx context.Context, sel ast.SelectionSet, v *model.OrderReferences) graphql.Marshaler {
+	if v == nil {
+		return graphql.Null
+	}
+	return ec._OrderReferences(ctx, sel, v)
 }
 
 func (ec *executionContext) unmarshalOString2string(ctx context.Context, v interface{}) (string, error) {
