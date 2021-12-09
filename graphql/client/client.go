@@ -18,7 +18,9 @@ func NewClient(cli *http.Client, baseURL string, options ...client.HTTPRequestOp
 }
 
 type Query struct {
-	Metadata *Ancon721Metadata "json:\"metadata\" graphql:\"metadata\""
+	Metadata           *Ancon721Metadata "json:\"metadata\" graphql:\"metadata\""
+	GetOrderReference  *OrderReference   "json:\"getOrderReference\" graphql:\"getOrderReference\""
+	GetOrderReferences *OrderReferences  "json:\"getOrderReferences\" graphql:\"getOrderReferences\""
 }
 type Transaction struct {
 	Metadata DagLink "json:\"metadata\" graphql:\"metadata\""

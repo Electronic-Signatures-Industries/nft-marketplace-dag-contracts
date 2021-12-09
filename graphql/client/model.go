@@ -27,3 +27,14 @@ type MetadataTransactionInput struct {
 	Owner    string `json:"owner"`
 	NewOwner string `json:"newOwner"`
 }
+
+type OrderReference struct {
+	OrderHash   string `json:"orderHash"`
+	TokenID     string `json:"tokenId"`
+	TokenAddres string `json:"tokenAddres"`
+	TxHash      string `json:"txHash"`
+}
+
+type OrderReferences struct {
+	Links []*OrderReference `json:"links,omitempty"`
+}

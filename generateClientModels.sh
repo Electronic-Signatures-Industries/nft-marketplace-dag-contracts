@@ -1,2 +1,2 @@
 #!/bin/bash
-gqlgenc -init
+~/go/bin/gqlgenc -init

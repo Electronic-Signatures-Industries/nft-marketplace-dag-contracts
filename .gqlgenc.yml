@@ -10,6 +10,6 @@ models:
   Date:
     model: github.com/99designs/gqlgen/graphql.Time
 schema:
-  - "schemas/ancon721_metadata.graphqls" # Where are all the schema files located?
+  - "graphql/server/graph/schema.graphqls" # Where are all the schema files located?
 query:
   - "playground/mutation/sample.graphql" # Where are all the query files located?
