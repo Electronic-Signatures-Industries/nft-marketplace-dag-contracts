@@ -1,4 +1,4 @@
-module github.com/electronic-Signatures-Industries/nft-marketplace-dag-contracts
+module github.com/Electronic-Signatures-Industries/nft-marketplace-dag-contracts
 
 go 1.17
 
